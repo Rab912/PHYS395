@@ -8,7 +8,7 @@ Created on Wed Jan 17 12:07:08 2024
 """
 
 import numpy as np
-import scipy as sp
+from scipy.interpolate import CubicSpline
 from matplotlib import pyplot as plt
 
 x_max = np.pi
@@ -22,7 +22,7 @@ y_n100 = np.sin(x_spline)
 x1 = np.linspace(x_min, x_max, 11, endpoint=False)[1:]
 y1 = np.sin(x1)
 
-y_spline1 = sp.interpolate.CubicSpline(x1, y1)
+y_spline1 = CubicSpline(x1, y1)
 delta1 = y_spline1(x_spline) - y_n100
 MAE1 = np.max(np.abs(delta1))               # Maximum absolute error
 
@@ -31,7 +31,7 @@ MAE1 = np.max(np.abs(delta1))               # Maximum absolute error
 x2 = np.linspace(x_min, x_max, 21, endpoint=False)[1:]
 y2 = np.sin(x2)
 
-y_spline2 = sp.interpolate.CubicSpline(x2, y2)
+y_spline2 = CubicSpline(x2, y2)
 delta2 = y_spline2(x_spline) - y_n100
 MAE2 = np.max(np.abs(delta2))
 

@@ -8,7 +8,7 @@ Created on Wed Jan 17 10:32:31 2024
 """
 
 import numpy as np
-import scipy as sp
+from scipy.interpolate import CubicSpline
 from matplotlib import pyplot as plt
 
 x_max = np.pi
@@ -18,7 +18,7 @@ x = np.linspace(x_min, x_max, 11, endpoint=False)[1:]
 y = np.sin(x)
 
 x_spline = np.linspace(x_min, x_max, 100)
-y_spline = sp.interpolate.CubicSpline(x, y)
+y_spline = CubicSpline(x, y)
 
 plt.plot(x, y, ".", color="black", zorder=3)
 plt.plot(x_spline, y_spline(x_spline), color="red")
