@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jan 28 23:59:39 2024
+Created on Mon Jan 29 13:23:29 2024
 
 @author: Rabin Meetarbhan
 
@@ -15,8 +15,8 @@ import aux
 
 f = lambda x : 1 / (1 + 10 * np.square(x))
 
-grid_10 = np.linspace(-1, 1, 10)
-grid_100 = np.linspace(-1, 1, 100)
+grid_10 = np.cos((np.arange(0, 10) + 0.5) * np.pi / 10)
+grid_100 = np.cos((np.arange(0, 100) + 0.5) * np.pi / 100)
 
 coeff_10 = aux.cheb_coefficients(grid_10, f(grid_10))
 coeff_100 = aux.cheb_coefficients(grid_100, f(grid_100))
@@ -48,8 +48,6 @@ if (gen_plot):
     
     axs[0].set_xlim(left=-1.1, right=1.1)
     axs[0].set_ylim(bottom=-0.1, top=1.1)
-    
-    # Comment this out to see full behaviour at endpoints
     axs[1].set_ylim(bottom=-0.1, top=1.1)
     
     axs[0].tick_params(axis='x', which='both', bottom=False)
