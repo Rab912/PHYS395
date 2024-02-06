@@ -1,6 +1,8 @@
-If in a Unix terminal, you can run all scripts automatically by calling "./runall.sh < <filename.ext>".
+Made with Conda Python 3.11.5.
 
-If you're not a weird person and don't use WSL, you can run each script using "python <script name> < <filename.ext>".
+If in a Unix terminal, you can run all scripts on a single file automatically by calling "./runall.sh <file>".
 
-The least-squares algorithm used currently only uses weights equal to unity (will try to change this later).
+Otherwise, you can run each script using "python3 <script> <file>".
+
+The implemented least-squares algorithm only uses weights equal to unity.
 

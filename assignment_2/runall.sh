@@ -1,22 +1,24 @@
 #!/bin/bash
 
-echo "Enter a data file name:"
-
-read FILE <&0
+if [ $# -eq 0 ]
+    then
+        echo "No file was supplied. Terminating..."
+        exit
+fi
 
 echo "Running \"problem_1.py\"..."
-./problem_1.py < $FILE
+python3 problem_1.py $1
 
 echo "Running \"problem_2.py\"..."
-./problem_2.py < $FILE
+python3 problem_2.py $1
 
 echo "Running \"problem_3.py\"..."
-./problem_3.py < $FILE
+python3 problem_3.py $1
+
+echo "Running \"problem_4_1.py\"..."
+python3 problem_4_1.py $1
 
 echo "Running \"problem_4_2.py\"..."
-./problem_4_2.py < $FILE
-
-echo "Running \"problem_4_3.py\"..."
-./problem_4_3.py < $FILE
+python3 problem_4_2.py $1
 
 echo "Done"

@@ -2,13 +2,14 @@
 
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb  2 09:29:09 2024
+Created on Fri Feb  2 09:29:17 2024
 
 @author: Rabin Meetarbhan
+
+Note: Correct console output is given in the corresponding output text file.
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
 import aux
 
 data = aux.load_data_stdin()
@@ -24,20 +25,8 @@ y = data[:,1]
 a = aux.basis_vander(x, basis_fn, k_max)
 c = np.dot(np.linalg.pinv(a), y)
 
-cd_number = aux.cd_number(a)
+chisq = aux.chi_squared(y, aux.basis_val(x, basis_fn, c))
 
-print(f"Condition number for matrix A: {cd_number}")
+print(f"chi-squared: {chisq}, dof: {np.size(x) - k_max}")
+print(f"reduced chi-squared: {chisq / (np.size(x) - k_max)}")
 
-x_fit = np.linspace(0, 1, 100)
-y_fit = aux.basis_val(x_fit, basis_fn, c)
-
-plt.figure(figsize=(8, 6), dpi=80)
-plt.plot(x, y, ".", markersize=1, color="black")
-plt.plot(x_fit, y_fit, color="red", label=f"Order {k_max} approximation")
-plt.xlim(0, 1)
-plt.xlabel("x")
-plt.ylabel("y")
-plt.title("Plot of y versus x")
-plt.grid()
-plt.legend()
-plt.savefig("problem_4_2_output.pdf")

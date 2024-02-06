@@ -12,7 +12,7 @@ import numpy as np
 Loads in data through the standard input.
 """
 def load_data_stdin():
-    data = np.loadtxt(sys.stdin)
+    data = np.loadtxt(sys.argv[1])
 
     length, columns = data.shape
 
@@ -33,7 +33,6 @@ def basis_vander(x, basis, degree):
         a[i] = basis(x[i], degree)
         
     return a
-
 
 """
 Evaluates a basis function series over a set of points.
@@ -56,4 +55,12 @@ Returns the chi-squared value for a fit to data. Currently uses weights equal to
 """
 def chi_squared(y, y_model):
     return np.sum(np.square(y - y_model))
+
+"""
+Explicitly calculates the inverse of the SVD of the given matrix (in case this is required).
+"""
+def svd_inv(a):
+    u, s, vh = np.linalg.svd(a, full_matrices=False)
+    
+    return np.dot(vh.T, np.dot(np.diag(np.reciprocal(s, where=s!=0)), u.T))
 
