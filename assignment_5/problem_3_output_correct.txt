@@ -1,0 +1,1 @@
+Period = 7.416298709203561 with error 4.526291341733213e-09 (quadrature integration)

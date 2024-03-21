@@ -1,0 +1,1 @@
+Amplitude of 1.2939115738304012 required for 10% difference (0.10388913950891836)

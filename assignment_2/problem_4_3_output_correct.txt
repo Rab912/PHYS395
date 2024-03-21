@@ -1,2 +1,0 @@
-chi-squared: 8992.417143993933, dof: 9123
-reduced chi-squared: 0.9856864128021411
